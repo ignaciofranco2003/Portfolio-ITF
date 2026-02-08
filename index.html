@@ -4,674 +4,320 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ignacio Franco | Portfolio</title>
-  <meta name="description" content="Portfolio de Ignacio Franco: Ciudad Reporta, Gestión de Tareas y Finanzas, Web ONG." />
-
-  <style>
-    :root{
-      --bg0:#070A12;
-      --bg1:#0B1020;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.04);
-      --line: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-
-      --accent: #7C5CFF;
-      --accent2:#38BDF8;
-      --accent3:#22C55E;
-
-      --shadow: 0 20px 70px rgba(0,0,0,.45);
-      --radius: 20px;
-
-      --gap: 16px;
-    }
-
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background:
-        radial-gradient(900px 600px at 18% 8%, rgba(124,92,255,.20), transparent 56%),
-        radial-gradient(900px 600px at 84% 18%, rgba(56,189,248,.16), transparent 55%),
-        radial-gradient(900px 600px at 56% 105%, rgba(34,197,94,.12), transparent 58%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      line-height: 1.55;
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none }
-    .container{ max-width:1120px; margin:0 auto; padding: 28px 18px 56px }
-
-    .glow{
-      position:fixed; inset:-20%;
-      background:
-        radial-gradient(circle at 30% 25%, rgba(124,92,255,.12), transparent 40%),
-        radial-gradient(circle at 70% 35%, rgba(56,189,248,.10), transparent 42%),
-        radial-gradient(circle at 55% 78%, rgba(34,197,94,.08), transparent 45%);
-      filter: blur(30px);
-      pointer-events:none;
-      z-index:-1;
-      transform: translateZ(0);
-    }
-
-    .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    /* NAV */
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 14px 16px;
-      border-radius: 999px;
-      position: sticky;
-      top: 14px;
-      z-index: 20;
-    }
-
-    .brand{ display:flex; align-items:center; gap:10px }
-    .logo{
-      width:36px; height:36px; border-radius: 12px;
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(56,189,248,.55));
-      box-shadow: 0 18px 50px rgba(124,92,255,.22);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: conic-gradient(from 180deg, rgba(255,255,255,.14), transparent 35%, rgba(255,255,255,.12), transparent 70%);
-      transform: rotate(25deg);
-      opacity:.65;
-    }
-
-    .brand b{ font-size:14px; letter-spacing:.2px }
-    .brand span{ display:block; font-size:12px; color: var(--muted) }
-
-    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end }
-    .pill{
-      padding: 8px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.16);
-      font-size: 13px;
-      color: var(--muted);
-      transition: transform .15s ease, border-color .15s ease, color .15s ease, background .15s ease;
-    }
-
-    .pill.primaryLink{
-      padding: 8px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      font-size: 13px;
-      color: var(--muted);
-      transition: transform .15s ease, border-color .15s ease, color .15s ease, background .15s ease;
-    }
-
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(124,92,255,.55);
-      color: var(--text);
-      background: rgba(124,92,255,.10);
-    }
-
-    .hero{
-      margin-top: 18px;
-      display: block;
-    }
-
-    @media (max-width: 900px){ .hero{ grid-template-columns:1fr } }
-    .heroMain{ 
-      padding: 40px 32px;
-    }
-
-    h1{
-      margin:0 0 10px;
-      font-size: 34px;
-      line-height: 1.12;
-      letter-spacing:-.6px;
-    }
-
-    .subtitle{
-      margin:0;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 95%;
-      line-height: 1.7;
-    }
-
-    .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 11px 14px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      font-weight: 650;
-      font-size: 14px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(124,92,255,.55) }
-    .btn.primary{
-      border-color: rgba(124,92,255,.65);
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(56,189,248,.40));
-      box-shadow: 0 18px 50px rgba(124,92,255,.20);
-    }
-
-    /* Skills box */
-    .skillsBox{ padding: 18px }
-    .skillsGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 520px){ .skillsGrid{ grid-template-columns:1fr } }
-
-    .skillCard{
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.16);
-    }
-    .skillCard b{ display:block; font-size: 14px; margin-bottom: 6px }
-    .skillCard span{ display:block; color: var(--muted); font-size: 13px }
-
-    /* Section */
-    .section{ margin-top: 26px }
-    .sectionHeader{
-      display:flex; align-items:flex-end; justify-content:space-between; gap: 12px;
-      margin: 26px 0 12px;
-      padding: 0 2px;
-    }
-    .sectionHeader h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing: -.3px;
-    }
-    .sectionHeader p{ margin:0; color: var(--muted); font-size: 14px }
-
-    .divider{
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      margin: 16px 0 0;
-      border:0;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-    }
-
-    /* PROJECTS */
-    .project{
-      grid-column: span 6;
-      padding: 18px 18px;
-      position: relative;
-      overflow: hidden;
-      transform: translateZ(0);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    @media (max-width: 900px){ .project{ grid-column: span 12; } }
-
-    .project::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(650px 120px at 18% 0%, rgba(124,92,255,.20), transparent 55%),
-        radial-gradient(650px 120px at 82% 0%, rgba(56,189,248,.14), transparent 55%);
-      opacity:.70;
-      pointer-events:none;
-    }
-
-    .project::after{
-      content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.10), transparent 40%);
-      transform: rotate(18deg);
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity .18s ease;
-    }
-
-    .project:hover{
-      transform: translateY(-3px);
-      border-color: rgba(124,92,255,.38);
-      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.045));
-    }
-    .project:hover::after{ opacity: .55 }
-
-    .project > *{ position: relative }
-
-    .tagrow{ display:flex; gap:8px; flex-wrap:wrap; margin: 10px 0 12px }
-    .tag{
-      font-size: 12px;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-    }
-
-    .project h3{ margin:0 0 8px; font-size: 18px; letter-spacing:-.2px }
-    .project p{ margin:0 0 10px; color: var(--muted); font-size: 14px }
-
-    .projLinks{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px }
-    .mini{
-      padding: 9px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      font-size: 13px;
-      color: var(--text);
-      font-weight: 650;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .mini:hover{
-      transform: translateY(-1px);
-      border-color: rgba(124,92,255,.55);
-      background: rgba(124,92,255,.10);
-    }
-
-    /* Contact */
-    .contactWrap{ grid-column: span 12; padding: 18px }
-    .copyBox{
-      margin-top: 10px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-    }
-    .copyBox code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: rgba(255,255,255,.88);
-      font-size: 13px;
-      word-break: break-all;
-    }
-    .copyBtn{
-      margin-left:auto;
-      cursor:pointer;
-      user-select:none;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background: rgba(124,92,255,.12);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 13px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .copyBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(124,92,255,.55);
-      background: rgba(124,92,255,.18);
-    }
-    .copied{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-      display:none;
-    }
-
-    /* Footer */
-    .footer{
-      margin-top: 26px;
-      padding: 16px 18px;
-      display:flex;
-      gap: 12px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    :focus-visible{
-      outline: 3px solid rgba(124,92,255,.55);
-      outline-offset: 3px;
-      border-radius: 12px;
-    }
-
-    @media (prefers-reduced-motion: no-preference){
-      .float-in{ animation: floatIn .55s ease both; }
-      @keyframes floatIn{
-        from{ opacity:0; transform: translateY(10px) }
-        to{ opacity:1; transform: translateY(0) }
-      }
-    }
-
-  /* Notificación Flotante (Toast) */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--accent);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 14px;
-    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.4);
-    z-index: 100;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .contact-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-
-  .contact-info b {
-    font-size: 18px;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 24px;
-    align-items: center;
-  }
-  
-  @media (max-width: 768px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .actions-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .email-box-mini {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 14px;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    width: 100%;
-  }
-
-  .email-box-mini code {
-    font-size: 14px;
-    color: var(--muted);
-  }
-
-  /* NUEVOS ESTILOS DE SCROLL */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .section {
-    scroll-margin-top: 100px;
-  }
-
-  /* Mejora del z-index del Nav para que no se solape nada por encima */
-  .nav {
-    z-index: 1000;
-  }
-  </style>
+  <meta name="description" content="Portfolio de Ignacio Franco" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 
 <body>
-  <div class="glow" aria-hidden="true"></div>
+  <div class="pf-glow" aria-hidden="true"></div>
 
-  <div class="container">
-    <header class="card nav float-in">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <b>Ignacio Tomas Franco</b>
-          <span>Desarrollador de Software · Junior</span>
+  <div class="pf-container">
+    <!-- NAV -->
+    <header class="pf-card pf-nav u-float-in">
+      <div class="pf-brand">
+          <div class="pf-brand__logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="pf-brand__icon">
+              <path d="M9 6l6 6-6 6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </div>    
+          <div class="pf-brand__text">
+          <b class="pf-brand__name">Ignacio Tomas Franco</b>
+          <span class="pf-brand__role">Desarrollador Backend / Full Stack</span>
         </div>
       </div>
 
-      <nav class="navlinks" aria-label="Secciones">
-        <a class="pill" href="#proyectos">Proyectos</a>
-        <a class="pill" href="#skills">Skills</a>
-        <a class="pill" href="#contacto">Contacto</a>
-        <a class="btn primary"  
-          style="     
-          padding: 8px 12px;
-          border-radius: 999px;
-          border:1px solid var(--line);
-          font-size: 13px;
-          color: var(--muted);
-          transition: transform .15s ease, border-color .15s ease, color .15s ease, background .15s ease;" href="https://github.com/ignaciofranco2003" 
-          target="_blank" rel="noreferrer">Ver GitHub
+      <nav class="pf-nav__links" aria-label="Secciones">
+        <a class="pf-pill" href="#Sobre-Mi">Sobre mí</a>
+        <a class="pf-pill" href="#proyectos">Proyectos</a>
+        <a class="pf-pill" href="#tecnologias">Tecnologías</a>
+        <a class="pf-pill" href="#contacto">Contacto</a>
+
+        <a
+          class="pf-btn pf-btn--primary pf-btn--pill"
+          href="https://github.com/ignaciofranco2003"
+          target="_blank"
+          rel="noreferrer"
+        >
+        <img class="nav-img-git" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+          GitHub
         </a>
       </nav>
     </header>
 
-    <section class="hero">
-      <div class="card heroMain float-in">
-        <h1>Sobre mi</h1>
+    <!-- HERO -->
+    <section id="Sobre-Mi" class="pf-hero">
+      <div class="pf-card pf-hero__card u-float-in">
+        <h1 class="pf-hero__title">Sobre mí</h1>
 
-        <p class="subtitle">
-          Soy <b>desarrollador de software</b> y estudiante de 5º año de la <b>Licenciatura en Informática</b>. Mi perfil técnico se centra principalmente en el ecosistema <b>Java con Spring Boot</b> para el desarrollo de sistemas backend robustos y escalables, y en <b>Python con Flask</b> para la creación de servicios y aplicaciones más ligeras y flexibles.
-        </p>
-        
-        <p class="subtitle" style="margin-top: 14px;">
-          Tengo experiencia en el desarrollo de <b>APIs REST</b>, en el modelado y gestión de bases de datos <b>MySQL</b>, y en la implementación de mecanismos de autenticación y autorización utilizando <b>roles, sesiones y JWT</b>. Manejo herramientas del entorno profesional como <b>Git y GitHub</b> para control de versiones y <b>Postman</b> para pruebas y validación de servicios.
-        </p>
-        
-        <p class="subtitle" style="margin-top: 14px;">
-          Además, cuento con formación en desarrollo web utilizando <b>HTML, CSS y JavaScript</b>, integrando estas tecnologías con sistemas backend. Mi objetivo es continuar desarrollándome profesionalmente en el área de <b>backend y full stack</b>, participando en proyectos donde pueda aportar valor técnico y seguir profundizando en <b>arquitectura de software</b> y diseño de sistemas.
+        <p class="pf-hero__text">
+          Soy <b>desarrollador Backend / Full Stack</b> y estudiante de 5º año de la <b>Licenciatura en Informática</b>.
+          Mi perfil técnico se centra principalmente en el ecosistema <b>Java con Spring Boot</b> para el desarrollo
+          de sistemas backend robustos y escalables, y en <b>Python con Flask</b> para la creación de servicios y
+          aplicaciones más ligeras y flexibles.
         </p>
 
-        <div class="cta">
-          <a class="btn primary" href="https://github.com/ignaciofranco2003" target="_blank" rel="noreferrer">Ver GitHub</a>
-          <a class="btn" href="#proyectos">Proyectos</a>
-          <a class="btn" href="#contacto">Contacto</a>
-        </div>
+        <p class="pf-hero__text pf-hero__text--spaced">
+          Tengo experiencia en el desarrollo de <b>APIs REST</b>, en el modelado y gestión de bases de datos <b>MySQL</b>,
+          y en la implementación de mecanismos de autenticación y autorización utilizando <b>roles, sesiones y JWT</b>.
+          Manejo herramientas del entorno profesional como <b>Git y GitHub</b> para control de versiones y <b>Postman</b>
+          para pruebas y validación de servicios.
+        </p>
 
-        <hr class="divider" />
+        <p class="pf-hero__text pf-hero__text--spaced">
+          Además, cuento con formación en desarrollo web utilizando <b>HTML, CSS y JavaScript</b>, integrando estas
+          tecnologías con sistemas backend. Mi objetivo es continuar desarrollándome profesionalmente en el área de
+          <b>backend y full stack</b>, participando en proyectos donde pueda aportar valor técnico y seguir profundizando
+          en arquitectura de software y diseño de sistemas.
+        </p>
+
+        <hr class="pf-divider" />
       </div>
     </section>
 
-    <section id="proyectos" class="section">
-      <div class="sectionHeader">
-        <h2>Proyectos Académicos destacados</h2>
-        <p>Descripción + acceso directo a repositorios.</p>
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="pf-section">
+      <div class="pf-section__header">
+        <div>
+          <h2 class="pf-section__title">Proyectos</h2>
+          <p class="pf-section__subtitle">Descripción y acceso directo a repositorios con imágenes.</p>
+        </div>
       </div>
 
-      <div class="grid">
+      <div class="pf-grid">
         <!-- 1) CIUDAD REPORTA -->
-        <article class="card project float-in">
-          <h3>Ciudad Reporta</h3>
-          <div class="tagrow">
-            <span class="tag">Flask</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Android</span>
-            <span class="tag">REST</span>
+        <article class="pf-card pf-project u-float-in">
+          <h3 class="pf-project__title">Ciudad Reporta</h3>
+          <div class="pf-tagrow">
+            <span class="pf-tag">Python</span>
+            <span class="pf-tag">Flask</span>
+            <span class="pf-tag">MySQL</span>
+            <span class="pf-tag">Android</span>
           </div>
-          <p>
-            Sistema de reportes ciudadanos donde los usuarios pueden registrar incidencias, consultar estados y visualizar
-            reportes en el mapa. Incluye backend con API REST y una app Android que consume los servicios.
+          <p class="pf-project__desc">
+            Sistema de reportes ciudadanos donde los usuarios pueden registrar incidencias urbanas y visualizar reportes de otros usuarios en un mapa.
+            <br />
+            Incluye backend con API REST y una app Android que consume los servicios.
           </p>
-          <div class="projLinks">
-            <a class="mini" href="https://github.com/ignaciofranco2003/Ciudad-Reporta" target="_blank" rel="noreferrer">Repositorio</a>
+          <div class="pf-project__links">
+            <a class="pf-btn pf-btn--mini" href="https://github.com/ignaciofranco2003/Ciudad-Reporta" target="_blank" rel="noreferrer">Repositorio</a>
           </div>
         </article>
 
         <!-- 2) GESTION TAREAS Y FINANZAS -->
-        <article class="card project float-in">
-          <h3>Gestión de Tareas y Finanzas</h3>
-          <div class="tagrow">
-            <span class="tag">Java 17</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JWT</span>
+        <article class="pf-card pf-project u-float-in">
+          <h3 class="pf-project__title">Gestión de Tareas y Finanzas</h3>
+          <div class="pf-tagrow">
+            <span class="pf-tag">Java</span>
+            <span class="pf-tag">Spring Boot</span>
+            <span class="pf-tag">MySQL</span>
+            <span class="pf-tag">HTML - CSS - JS</span>
           </div>
-          <p>
-            Aplicación para organizar finanzas personales y tareas: manejo de cuentas, ingresos/gastos, ahorros y
-            planificación de tareas. Incluye un backend con autenticación y un frontend web integrado.
+          <p class="pf-project__desc">
+            Aplicación para organizar finanzas personales y tareas: manejo de cuentas, ingresos/gastos, ahorros y planificación de las tareas.
+            <br />
+            Incluye un backend con autenticación y un frontend web integrado.
           </p>
-          <div class="projLinks">
-            <a class="mini" href="https://github.com/ignaciofranco2003/Gestor-finanzas-y-tareas" target="_blank" rel="noreferrer">Repo Backend</a>
-            <a class="mini" href="https://github.com/ignaciofranco2003/Gestion-finanzas-y-tareas-front" target="_blank" rel="noreferrer">Repo Frontend</a>
+          <div class="pf-project__links">
+            <a class="pf-btn pf-btn--mini" href="https://github.com/ignaciofranco2003/Gestor-finanzas-y-tareas" target="_blank" rel="noreferrer">Repo Backend</a>
+            <a class="pf-btn pf-btn--mini" href="https://github.com/ignaciofranco2003/Gestion-finanzas-y-tareas-front" target="_blank" rel="noreferrer">Repo Frontend</a>
           </div>
         </article>
 
         <!-- 3) WEB ONG -->
-        <article class="card project float-in">
-          <h3>Web ONG</h3>
-          <div class="tagrow">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Responsive</span>
-            <span class="tag">UI</span>
+        <article class="pf-card pf-project u-float-in">
+          <h3 class="pf-project__title">Web ONG</h3>
+          <div class="pf-tagrow">
+            <span class="pf-tag">HTML</span>
+            <span class="pf-tag">CSS</span>
+            <span class="pf-tag">JS</span>
           </div>
-          <p>
+          <p class="pf-project__desc">
             Sitio web institucional para una ONG, pensado para presentar su misión, actividades y formas de colaboración,
             con diseño responsive y estructura clara para mantenimiento y futuras integraciones.
           </p>
-          <div class="projLinks">
-            <a class="mini" href="https://github.com/ignaciofranco2003/WEB-ONG" target="_blank" rel="noreferrer">Repositorio</a>
+          <div class="pf-project__links">
+            <a class="pf-btn pf-btn--mini" href="https://ignaciofranco2003.github.io/WEB-ONG/" target="_blank" rel="noreferrer">Ver Pagina</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <div class="sectionHeader">
-        <h2>Skills</h2>
-        <p>Capacidades que aplico en proyectos.</p>
+    <!-- TECNOLOGÍAS -->
+    <section id="tecnologias" class="pf-section">
+      <div class="pf-section__header">
+        <div>
+          <h2 class="pf-section__title">Tecnologías</h2>
+          <p class="pf-section__subtitle">Stack y herramientas que uso en proyectos.</p>
+        </div>
       </div>
-
-      <div class="grid">
-        <div class="card" style="grid-column: span 12; padding:18px;">
-          <div class="skillsGrid">
-            <div class="skillCard">
-              <b>APIs REST</b>
-              <span>Diseño de endpoints, JSON, control de errores, validación</span>
-            </div>
-            <div class="skillCard">
-              <b>Testing / QA</b>
-              <span>Pruebas funcionales en Postman, validación de respuestas JSON y códigos de estado</span>
-            </div>
-            <div class="skillCard">
-              <b>Persistencia</b>
-              <span>MySQL, relaciones, consultas eficientes</span>
-            </div>
-            <div class="skillCard">
-              <b>Auth</b>
-              <span>JWT, roles, autorización por endpoint</span>
-            </div>
-            <div class="skillCard">
-              <b>Web</b>
-              <span>Front responsive, integración con backend</span>
-            </div>
-            <div class="skillCard">
-              <b>Git/GitHub</b>
-              <span>Versionado, releases y estructura de repos</span>
+    
+      <div class="pf-grid">
+        <div class="pf-card pf-tech u-float-in">
+    
+          <!-- FRONTEND -->
+          <div class="pf-tech__group">
+            <div class="pf-tech__groupTitle">Frontend</div>
+            <div class="pf-tech__grid">
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
+                <span class="pf-tech__name">HTML</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
+                <span class="pf-tech__name">CSS</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+                <span class="pf-tech__name">JavaScript</span>
+              </div>
             </div>
           </div>
+    
+          <!-- BACKEND -->
+          <div class="pf-tech__group">
+            <div class="pf-tech__groupTitle">Backend</div>
+            <div class="pf-tech__grid">
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+                <span class="pf-tech__name">Java</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" />
+                <span class="pf-tech__name">Spring Boot</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+                <span class="pf-tech__name">Python</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" />
+                <span class="pf-tech__name">Flask</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
+                <span class="pf-tech__name">C#</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" />
+                <span class="pf-tech__name">.NET</span>
+              </div>
+            </div>
+          </div>
+    
+          <!-- BASES DE DATOS -->
+          <div class="pf-tech__group">
+            <div class="pf-tech__groupTitle">Base de datos</div>
+            <div class="pf-tech__grid">
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                <span class="pf-tech__name">MySQL</span>
+              </div>
+            </div>
+          </div>
+    
+          <!-- UTILIDADES -->
+          <div class="pf-tech__group">
+            <div class="pf-tech__groupTitle">Utilidades</div>
+            <div class="pf-tech__grid">
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                <span class="pf-tech__name">Git</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+                <span class="pf-tech__name">GitHub</span>
+              </div>
+    
+              <div class="pf-tech__item">
+                <img class="pf-tech__icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" />
+                <span class="pf-tech__name">Postman</span>
+              </div>
+            </div>
+          </div>
+    
         </div>
       </div>
     </section>
-
-    <section id="contacto" class="section">
-      <div class="sectionHeader">
-        <h2>Contacto</h2>
-        <p>¿Tenés una propuesta o consulta? ¡Hablemos!</p>
-      </div>
     
-      <div class="card contactWrap float-in">
-        <div class="contact-grid">
-          
-          <div class="contact-info">
-            <b style="font-size: 20px; display: block; margin-bottom: 8px;">Conectemos</b>
-            <p style="color: var(--muted); font-size: 15px; margin: 0; line-height: 1.6;">
-              Estoy disponible para oportunidades como desarrollador Junior. </br>
-              Podés copiar mi email para escribirme directamente o por LinkedIn.
-            </p>
-          </div>
-    
-          <div class="actions-stack">
-            <a class="btn primary" href="https://linkedin.com/in/itfranco2003" target="_blank" rel="noreferrer" style="width: 100%;">
-              Ver perfil en LinkedIn
-            </a>
-            
-            <div class="email-box-mini">
-              <code id="emailText">ignaciofranco2003@gmail.com</code>
-              <button class="copyBtn" id="copyBtn" type="button" style="padding: 6px 10px; font-size: 12px; border-radius: 8px;">
-                Copiar
-              </button>
-            </div>
-          </div>
-    
+    <!-- CONTACTO -->
+    <section id="contacto" class="pf-section">
+      <div class="pf-section__header">
+        <div>
+          <h2 class="pf-section__title">Contacto</h2>
+          <p class="pf-section__subtitle">¿Tenés una propuesta o consulta? ¡Hablemos!</p>
         </div>
       </div>
-    </section>
-    
-    <div id="toast" class="toast">
-      <span>✓</span> Email copiado al portapapeles
+
+      <section id="contacto">
+        <div class="pf-card pf-contact u-float-in">
+          <div class="pf-contact__grid">
+            <!-- Info -->
+            <div class="pf-contact__info">
+              <p class="pf-contact__text">
+                Estoy disponible para oportunidades en las cuales seguir creciendo en el mundo del desarrollo de software.<br />
+              </p>
+      
+            </div>
+      
+            <!-- Acciones -->
+            <div class="pf-contact__actions">
+              <a
+                class="pf-btn pf-btn--primary pf-contact__linkedin"
+                href="https://linkedin.com/in/itfranco2003"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Abrir LinkedIn"
+              >
+                <span class="pf-liIcon" aria-hidden="true">
+                  <!-- SVG LinkedIn -->
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0.5 8.5H4.5V23H0.5V8.5zM8 8.5H11.8V10.4H11.85C12.38 9.4 13.68 8.35 15.6 8.35 19.7 8.35 20.5 11.05 20.5 14.55V23H16.5V15.4C16.5 13.6 16.47 11.25 14.02 11.25 11.53 11.25 11.15 13.2 11.15 15.28V23H7.15V8.5H8z"/>
+                  </svg>
+                </span>
+                <span>LinkedIn</span>
+              </a>
+              <span class="pf-copybtn" id="copyBtn" role="button" tabindex="0">
+                <svg class="pf-copybtn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v.01L12 13l8-6.99V6H4zm0 12h16V8l-8 7-8-7v10z"/>
+                </svg>
+                Copiar Email de contacto
+              </span>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <!-- TOAST -->
+    <div id="toast" class="pf-toast" aria-live="polite">
+      <span class="pf-toast__icon">✓</span>
+      <span class="pf-toast__text">Email copiado al portapapeles</span>
     </div>
 
-    <footer class="card footer float-in" aria-label="Pie de página">
+    <!-- FOOTER -->
+    <footer class="pf-card pf-footer u-float-in" aria-label="Pie de página">
       <div>© <span id="year"></span> Ignacio Tomas Franco · Portfolio</div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a class="pill" href="#proyectos">↑ Proyectos</a>
-        <a class="pill" href="#skills">↑ Skills</a>
-        <a class="pill" href="#contacto">↑ Contacto</a>
+      <div class="pf-footer__links">
+        <a class="pf-pill" href="#Sobre-Mi">↑ Sobre mí</a>
+        <a class="pf-pill" href="#proyectos">↑ Proyectos</a>
+        <a class="pf-pill" href="#tecnologias">↑ Tecnologías</a>
+        <a class="pf-pill" href="#contacto">↑ Contacto</a>
       </div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const copyBtn = document.getElementById("copyBtn");
-    const emailText = document.getElementById("emailText").textContent;
-    const toast = document.getElementById("toast");
-
-    copyBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(emailText);
-        
-        // Mostrar Toast
-        toast.classList.add("show");
-        copyBtn.textContent = "Copiado";
-        
-        // Ocultar después de 2.5 segundos
-        setTimeout(() => {
-          toast.classList.remove("show");
-          copyBtn.textContent = "Copiar";
-        }, 2500);
-        
-      } catch (e) {
-        // Fallback por si falla el portapapeles
-        console.error("Error al copiar");
-      }
-    });
-  </script>
 </body>
 </html>
