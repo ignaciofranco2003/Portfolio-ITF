@@ -21,8 +21,8 @@ const portfolioData = {
             tags: ["Java", "Spring Boot", "MySQL", "HTML - CSS - JS"],
             description: "Aplicación para organizar finanzas personales y tareas: manejo de cuentas, ingresos/gastos, ahorros y planificación de las tareas.<br />Incluye un backend con autenticación y un frontend web integrado.",
             links: [
-                { label: "Repo Backend", url: "https://github.com/ignaciofranco2003/Gestor-finanzas-y-tareas" },
-                { label: "Repo Frontend", url: "https://github.com/ignaciofranco2003/Gestion-finanzas-y-tareas-front" }
+                { label: "Repositorio Backend", url: "https://github.com/ignaciofranco2003/Gestor-finanzas-y-tareas" },
+                { label: "Repositorio Frontend", url: "https://github.com/ignaciofranco2003/Gestion-finanzas-y-tareas-front" }
             ]
         },
         // {
@@ -38,7 +38,7 @@ const portfolioData = {
             tags: ["Python", "Prolog", "Tkinter"],
             description: "Aplicación de Sudoku con enfoque híbrido declarativo. Combina Prolog (CLPFD) como motor lógico puro para generar y resolver tableros, y Python para transformaciones funcionales de datos.",
             links: [
-                { label: "Ver Repositorio", url: "https://github.com/ignaciofranco2003/Sudoku" }
+                { label: "Repositorio", url: "https://github.com/ignaciofranco2003/Sudoku" }
             ]
         }
     ],
